@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "Caveat-bold";
+    src: url("/public/fonts/Caveat-Regular.ttf") format("truetype");
+    font-weight: bold;
+    font-style: bold;
+}
