@@ -1,6 +1,6 @@
 // import NavBar from "../components/navBar"
 import dynamic from "next/dynamic"
-
+import Carousel from "../components/carousel"
 const NavBar = dynamic(() => import("../components/navBar"), { ssr: true})
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <p className="text-[2vw] font-semibold leading-[1] px-[21vw]">we shift that <span className="text-[#FFF44F]">portfolio</span> of products to meet <span className="text-[#FFF44F]">them</span>"</p>
       <p className="text-[2vw] font-semibold leading-[1] px-[34vw]">Marillyn Hewson</p>
    </div>
+   <Carousel/>
     </div>
     </>
   );

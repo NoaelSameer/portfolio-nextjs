@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@popmotion/popcorn": "^0.4.4",
     "aos": "^2.3.4",
+    "embla-carousel": "^8.5.2",
+    "framer-motion": "^12.4.7",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
