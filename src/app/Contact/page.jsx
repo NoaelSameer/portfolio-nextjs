@@ -21,7 +21,6 @@ export default function Home() {
             Fill out your information and I will get back to you as soon as possible.
           </p>
         </div>
-        {/* Contact Form Section - Changes layout on small screens */}
         <div className="w-full px-[6vw] mt-[5%] sm:mt-0 sm:p-4 sm:rounded-lg">
           <Contact_Form />
         </div>
