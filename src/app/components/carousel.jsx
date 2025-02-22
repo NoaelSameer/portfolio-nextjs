@@ -1,42 +1,59 @@
 "use client";
 
-import {motion, useAnimationControls} from "framer-motion"
+import { motion, useAnimationControls } from "framer-motion";
+import Images from "../images/images";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-import Images from "../images/images"
-// import { L } from "framer-motion/dist/types.d-6pKw1mTI"
 function Carousel() {
-    const controls = useAnimationControls();
-    let index = 0;
+  const controls = useAnimationControls();
+  let index = 0;
 
-    const nextSlide = async () =>{
-        index = (index + 1) % Images.length;
-        await controls.start({x : `-${index * 100}%`, transition: {duration: .5}})
-        }
-    const prevSlide = async () =>{
-        index = (index - 1) % Images.length;
-        await controls.start({x : `-${index * 100}%`, transition: {duration: .5}})
-    }
+  const nextSlide = async () => {
+    index = (index + 1) % Images.length;
+    await controls.start({
+      x: `-${index * 100}%`,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    });
+  };
+
+  const prevSlide = async () => {
+    index = (index - 1 + Images.length) % Images.length;
+    await controls.start({
+      x: `-${index * 100}%`,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    });
+  };
 
   return (
-    <div className="overflow-hidden bg-slate-600">
-        <motion.div className="flex" animate={controls}>
-            {Images.map(({src, link}, i)=> (
-                <a href={link} key={i}>
-                    {/* <motion.img key={i} src={src} initial={{x: i * -100}} animate={{x: 0}} transition={{duration:.5, ease: [0.6, 0.01, -0.05, 0.9]}}/> */}
-                 <motion.img key={i} src={src} className="min-w-[100vw]"/>
-                </a>
-                // <a key={i} href={link}>
-                // {/* <motion.img key={i} src={src}/> */}
-                // <a/>
-            ))}
+    <div className="relative w-full overflow-hidden rounded-xl shadow-2xl">
+      <motion.div className="flex" animate={controls}>
+        {Images.map(({ src, link }, i) => (
+          <a href={link} key={i} className="block min-w-full h-[65 vh]">
+            <motion.img
+              src={src}
+              className="w-full h-full object-cover"
+              alt={`Slide ${i + 1}`}
+            />
+            <div/>
+          </a>
+        ))}
+      </motion.div>
 
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-800 px-4 py-2 rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 text-lg font-semibold opacity-75 hover:opacity-100"
+      >
+        <FaArrowLeft size={24} />
+      </button>
 
-        </motion.div>
-    
-    <button onClick={prevSlide} className="absolute left-5 text-white text-[5vw]">Previous</button>
-    <button onClick={nextSlide} className="absolute right-5 text-white text-[5vw]">Next</button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-800 px-4 py-2 rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 text-lg font-semibold opacity-75 hover:opacity-100"
+      >
+        <FaArrowRight size={24} />
+      </button>
     </div>
-  )
+  );
 }
 
-export default Carousel
+export default Carousel;
