@@ -1,5 +1,6 @@
 import React from 'react'
 // import "../Static"
+
 function NavBar() {
   return (
     <>
